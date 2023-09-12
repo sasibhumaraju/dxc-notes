@@ -26,12 +26,25 @@
 }
 
 .item_content {
-  height: 20px;margin-top: 5px;
+  height: 20px;
+  margin-top: 5px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
      /* background-color: aliceblue; */
   border-radius: 10px;
+}
+
+.item_data {
+    width: 100px;
+    font-size: 14px;
+    /* font-weight: bold; */
+}
+
+.item_data2 {
+    width: 60px;
+    font-size: 14px;
+    /* font-weight: bold; */
 }
 
 .list_tile:hover {
@@ -57,6 +70,7 @@ button {
     font-size: 20px;
     cursor: pointer;
    position: relative;
+   background-color: transparent;
 }
 
 .tooltiptext {
