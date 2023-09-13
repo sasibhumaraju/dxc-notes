@@ -1,0 +1,14 @@
+.account_container {
+    margin-top: 20px;
+    width: calc(100% - 0px);      
+    /* height: 600px;     */
+    background-color: var(--primary-color);            
+    /* margin-bottom: 30px;    */
+    /* border-radius: 20px;    */
+}
+
+.title {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
