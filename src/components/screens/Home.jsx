@@ -15,7 +15,7 @@ function Home() {
         <div className={styles.message}>
           <div className={styles.heading}>System Operations Guide</div>
           <div className={styles.message_body}>
-            Start your SKF mainframe session and navigate to GTSO → ISPF → L.OP → Option 6 to check for WTORs. Before responding with D R,R, verify the database status in the respective regions ex: IIMSP, SIMSP, TIMSP etc.. cross verify using skfapps list. If any abnormalities are found, escalate the issue to the relevant team immediately to prevent disruptions.
+            Start your SKF mainframe session and navigate to GTSO → ISPF → L.OP → Option 6 to check for WTORs. Before responding with D R,R, verify the database status in the respective regions ex: IIMSP, SIMSP, TIMSP etc.. use code GWC4 while checking, cross verify using skfapps list. If any abnormalities are found, escalate the issue to the relevant team immediately to prevent disruptions.
           </div>
         </div>
 
