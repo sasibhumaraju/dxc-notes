@@ -8,7 +8,7 @@ function Time({heading,timezone,setTime}) {
   const dispatch = useDispatch();
 
 const  updateClock = () => {
-        const now = new Date();
+        const now = new Date();  
         const options = {
             timeZone: timezone,
             hour12: true,
@@ -28,8 +28,8 @@ const  updateClock = () => {
    
   return (
     <div className={styles.time}>
-         <div className={styles.heading}>{heading}</div> 
          <div className={styles.content} id={timezone}></div>
+      
     </div>
   )
 }

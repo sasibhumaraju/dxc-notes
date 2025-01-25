@@ -1,53 +1,60 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../css/AccountListTile.module.css'
-import { BiSolidCopyAlt } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
 import { areTimesApproximatelyEqual } from '../../util/GetTimeDif';
+import { Toast } from '@sasibhumaraju/react-toast';
+import controller from '../../Controller';
+import warnAudio from "../../audio/warning.mp3"
 
-function AccountListTile({ISTTime,cetTime,region,imsRegion,code,keyCode}) {
+function AccountListTile({beforeTime,cetTime,afterTime,region,imsRegion,code,keyCode}) {
 
-  const istTime = useSelector((store)=>store.time.IST)  
+  const [bgColor, setBgColor] = useState(false)  
   const copyKeyCode = (text) => {
-            console.log("start")
             navigator.clipboard.writeText(text);
-            alert("=>       "+text + "        <= copied!")
-            console.log("end")
-            
+            Toast.info(`copy: ${text}`)
+            controller.showToast("" + text)
   }
-  return (
-    <div className={styles.list_tile} style={{    backgroundColor:  areTimesApproximatelyEqual("0"+istTime,"0"+ISTTime)? "aqua":"var(--primary-color)"}} >
-        <div className={styles.item}>
-            <div className={styles.item_heading}>IST</div>
-            <div className={styles.item_content}> {ISTTime}</div>
-           
-        </div>
 
-        <div className={styles.item}>
-            <div className={styles.item_heading}>CET</div>
+  const audio = new Audio(warnAudio);
+
+  const setBackGroundColor = () => {
+    console.log(beforeTime,afterTime,cetTime)
+    const currentTime = new Date().toLocaleTimeString('en-US',{timeZone: "Europe/Amsterdam",hour12: false,hour: 'numeric',minute: 'numeric'});
+    if(currentTime >= beforeTime && currentTime <= afterTime) {
+        setBgColor(true);
+        audio.play()
+    }
+    else setBgColor(false);
+
+  }
+
+  useEffect(()=>{
+    
+   
+    const interval = setInterval(setBackGroundColor,10000);
+    return () => clearInterval(interval);
+  },[])
+
+  return (
+    <div className={`${styles.list_tile} ${bgColor? styles.disco_bg : null}`}   >
+       
+
+        <div className={styles.item} onClick={()=>copyKeyCode(cetTime)}>
             <div className={styles.item_content}> {cetTime}</div>
         </div>
 
-        <div className={styles.item}>
-            <div className={styles.item_heading}>REGION</div>
+        <div className={styles.item} onClick={()=>copyKeyCode(region)}>
             <div className={styles.item_content}> {region}</div>
         </div>
 
-        <div className={styles.item}>
-            <div className={styles.item_heading}>IMS REGION</div>
+        <div className={styles.item} onClick={()=>copyKeyCode(imsRegion)}>
             <div className={styles.item_content}> {imsRegion}</div>
         </div>
 
-        <div className={styles.item}> 
-            <div className={styles.item_heading}>CODE</div>
-            <div className={styles.item_content}> 
-            <div className={styles.item_data2}>  {code}  </div> <button id='keyData' onClick={()=>copyKeyCode(code)}  ><BiSolidCopyAlt/>  <span className={styles.tooltiptext}>copy</span></button> </div>
-         </div>
-
-        <div className={styles.item}>
-            <div className={styles.item_heading}>KEY</div>
+        <div className={styles.item } onClick={()=>copyKeyCode(keyCode)}>
             <div className={styles.item_content}>
-                <div className={styles.item_data}>  {keyCode}  </div>
-                <button id='keyData' onClick={()=>copyKeyCode(keyCode)}  ><BiSolidCopyAlt/>  <span className={styles.tooltiptext}>copy</span></button> </div>
+                {keyCode}  
+            </div>
         </div>
     </div>
   )

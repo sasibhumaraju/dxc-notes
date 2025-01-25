@@ -1,10 +1,7 @@
 .time {
-    width: 130px;
-    height: 90px;
-    /* background-color: red; */
+    width: max-content;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     flex-direction: column;
 }
 
@@ -15,6 +12,5 @@
 
 .content {
   font-size: 18px;
-  letter-spacing: 2px;
   font-weight: bold;
 }

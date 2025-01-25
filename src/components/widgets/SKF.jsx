@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../css/Accounts.module.css'
 import AccountListTile from './AccountListTile'
 import { SKFData } from '../../Data'
 
 function SKF() {
+
+  useEffect(()=>{
+    new Date().toLocaleDateString('en-US',{
+      timeZone: "Europe/Amsterdam",
+      hour12: false,
+      hour: 'numeric',
+      minute: 'numeric',
+      // second: 'numeric'
+  });
+  },[])
+
   return (
-    <div className={styles.account_container}>
-        <div className={styles.title}>SKF - DB CHECKS</div>
+    <div className={styles.account_container}>  
         {SKFData.map((obj,_)=>{
-            return <AccountListTile key={_} ISTTime={obj.ISTTime} cetTime={obj.cetTime} region={obj.region} imsRegion={obj.imsRegion}  code={obj.code} keyCode={obj.key}></AccountListTile>
+            return <AccountListTile key={_} beforeTime={obj.beforeTime} cetTime={obj.cetTime} afterTime={obj.afterTime} region={obj.region} imsRegion={obj.imsRegion}  code={obj.code} keyCode={obj.key}></AccountListTile>
         })}
        
     </div>
   )
 }
 
-export default SKF
+export default SKF;
