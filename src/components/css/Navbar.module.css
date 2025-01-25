@@ -34,7 +34,18 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    margin-right: 10px;
-    width: 90px;
+    margin-right: 20px;
+    width: 180px;
     align-items: center;
+}
+
+.day {
+    border-right: solid 1px  rgba(128, 128, 128, 0.224) ;
+    padding-right: 12px;
+}
+
+.audio_css {
+    border-right: solid 1px  rgba(128, 128, 128, 0.224) ;
+    width: 30px;
+    cursor: pointer;
 }

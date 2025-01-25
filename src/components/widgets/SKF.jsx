@@ -18,7 +18,7 @@ function SKF() {
   return (
     <div className={styles.account_container}>  
         {SKFData.map((obj,_)=>{
-            return <AccountListTile key={_} beforeTime={obj.beforeTime} cetTime={obj.cetTime} afterTime={obj.afterTime} region={obj.region} imsRegion={obj.imsRegion}  code={obj.code} keyCode={obj.key}></AccountListTile>
+            return <AccountListTile key={_} no={obj.no} beforeTime={obj.beforeTime} cetTime={obj.cetTime} afterTime={obj.afterTime} region={obj.region} imsRegion={obj.imsRegion}  code={obj.code} keyCode={obj.key}></AccountListTile>
         })}
        
     </div>

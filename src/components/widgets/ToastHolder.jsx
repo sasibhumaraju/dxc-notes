@@ -15,9 +15,19 @@ function ToastHolder() {
         setMessage(()=>"")
     }
 
-    useEffect(()=>{
-        controller.setToastMethods(showToast,hideToast);
-    },[])
+    useEffect(() => {
+        controller.setToastMethods(showToast,hideToast)
+        const handleKeyPress = (event) => {
+          if (event.key === "Enter") {
+            hideToast();
+          }
+        };
+        window.addEventListener("keydown", handleKeyPress);
+        return () => {
+          window.removeEventListener("keydown", handleKeyPress);
+        };
+      }, []);
+
 
 
   return (

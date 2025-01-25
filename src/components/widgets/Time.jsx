@@ -11,7 +11,7 @@ const  updateClock = () => {
         const now = new Date();  
         const options = {
             timeZone: timezone,
-            hour12: true,
+            hour12: false,
             hour: 'numeric',
             minute: 'numeric',
             // second: 'numeric'
